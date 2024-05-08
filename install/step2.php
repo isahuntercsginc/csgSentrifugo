@@ -1040,7 +1040,7 @@ function writeDBconstants($hostname,$username,$password,$dbname)
 		    <div class="new-form-ui ">
 			  <label class="required">Host<img src="images/help.png" title="IP address of your hosting account as your MySQL hostname." class="tooltip"></label>
 				<div >
-					<input type="text" maxlength="40" value="<?php if(!$_POST){ echo defined('SENTRIFUGO_HOST')?SENTRIFUGO_HOST:''; } else {echo $_POST['host']; }?>" id="host" name="host">
+					<input type="text" maxlength="256" value="<?php if(!$_POST){ echo defined('SENTRIFUGO_HOST')?SENTRIFUGO_HOST:''; } else {echo $_POST['host']; }?>" id="host" name="host">
 					<span><?php echo isset($msgarray['host'])?$msgarray['host']:'';?></span>
 				</div>
 			</div>
@@ -1048,7 +1048,7 @@ function writeDBconstants($hostname,$username,$password,$dbname)
 			<div class="new-form-ui ">
 			  <label class="required">User Name<img src="images/help.png" title="Database Server username provided during MySQL account setup." class="tooltip"></label>
 				<div>
-					<input type="text" maxlength="50" value="<?php if(!$_POST){ echo defined('SENTRIFUGO_USERNAME')?SENTRIFUGO_USERNAME:''; } else {echo $_POST['username']; }?>" id="username" name="username">
+					<input type="text" maxlength="64" value="<?php if(!$_POST){ echo defined('SENTRIFUGO_USERNAME')?SENTRIFUGO_USERNAME:''; } else {echo $_POST['username']; }?>" id="username" name="username">
 					<span><?php echo isset($msgarray['username'])?$msgarray['username']:'';?></span>
 				</div>
 			</div>
@@ -1056,7 +1056,7 @@ function writeDBconstants($hostname,$username,$password,$dbname)
 			<div class="new-form-ui ">
 			  <label >Password<img src="images/help.png" title="Database Server password provided during MySQL account setup." class="tooltip"></label>
 				<div>
-					<input type="password" maxlength="50" value="<?php if(!$_POST){ echo defined('SENTRIFUGO_PASSWORD')?SENTRIFUGO_PASSWORD:''; } else {echo $_POST['password']; }?>" id="password" name="password">
+					<input type="password" maxlength="64" value="<?php if(!$_POST){ echo defined('SENTRIFUGO_PASSWORD')?SENTRIFUGO_PASSWORD:''; } else {echo $_POST['password']; }?>" id="password" name="password">
 					<span><?php echo isset($msgarray['password'])?$msgarray['password']:'';?></span>
 				</div>
 			</div>
@@ -1064,7 +1064,7 @@ function writeDBconstants($hostname,$username,$password,$dbname)
 			<div class="new-form-ui ">
 			  <label class="required">Database Name<img src="images/help.png" title="Create a database and provide the name of the database here." class="tooltip"></label>
 				<div>
-					<input type="text" maxlength="50" value="<?php if(!$_POST){ echo defined('SENTRIFUGO_DBNAME')?SENTRIFUGO_DBNAME:'';} else {echo $_POST['dbname']; }?>" id="dbname" name="dbname">
+					<input type="text" maxlength="64" value="<?php if(!$_POST){ echo defined('SENTRIFUGO_DBNAME')?SENTRIFUGO_DBNAME:'';} else {echo $_POST['dbname']; }?>" id="dbname" name="dbname">
 					<span><?php echo isset($msgarray['dbname'])?$msgarray['dbname']:'';?></span>
 				</div>
 			</div>						
