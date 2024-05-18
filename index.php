@@ -41,7 +41,16 @@ require_once 'application/modules/default/library/sapp/Global.php';
 require_once 'public/text_constants.php';
 /* Query to fetch db version and then comparing with code version */
 try {
-    $mysqlPDO = new PDO('mysql:host='.SENTRIFUGO_HOST.';dbname='.SENTRIFUGO_DBNAME.'',SENTRIFUGO_USERNAME, SENTRIFUGO_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));   
+$options = array(
+    PDO::MYSQL_ATTR_SSL_CA => 'public/DigiCertGlobalRootCA.crt.pem',
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+);	
+$SENTRIFUGO_HOST = getenv('AZURE_MYSQL_HOST');
+$SENTRIFUGO_USERNAME = getenv('AZURE_MYSQL_USER');
+$SENTRIFUGO_PASSWORD = getenv('AZURE_MYSQL_PASSWORD');
+$SENTRIFUGO_DBNAME = getenv('Azure_MYSQL_DBNAME');
+
+    $mysqlPDO = new PDO('mysql:host='.SENTRIFUGO_HOST.';dbname='.SENTRIFUGO_DBNAME.'',SENTRIFUGO_USERNAME, SENTRIFUGO_PASSWORD, $options);   
     $date= gmdate("Y-m-d H:i:s");
     $stmt =  $mysqlPDO->prepare("SHOW TABLES LIKE 'main_patches_version'");
     $stmt->execute();
