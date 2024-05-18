@@ -41,16 +41,7 @@ require_once 'application/modules/default/library/sapp/Global.php';
 require_once 'public/text_constants.php';
 /* Query to fetch db version and then comparing with code version */
 try {
-    $url = 'https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem';
-    $ch = curl_init($url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    $response = curl_exec($ch);
-    curl_close($ch);
-    echo $response => '/wwwroot/public/DigiCertGlobalRootCA.crt.pem';
-    $options = array(
-    PDO::MYSQL_ATTR_SSL_CA => '/wwwroot/public/DigiCertGlobalRootCA.crt.pem'
-    );
-    $mysqlPDO = new PDO('mysql:host='.SENTRIFUGO_HOST.';dbname='.SENTRIFUGO_DBNAME.'',SENTRIFUGO_USERNAME, SENTRIFUGO_PASSWORD, $options, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));   
+    $mysqlPDO = new PDO('mysql:host='.SENTRIFUGO_HOST.';dbname='.SENTRIFUGO_DBNAME.'',SENTRIFUGO_USERNAME, SENTRIFUGO_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));   
     $date= gmdate("Y-m-d H:i:s");
     $stmt =  $mysqlPDO->prepare("SHOW TABLES LIKE 'main_patches_version'");
     $stmt->execute();
