@@ -596,7 +596,7 @@ $GLOBALS['qry27'] = "CREATE
 						new.department_id, 
 						dept_name, 
 						new.jobtitle, 
-						job_name, 
+						job_name,
 						new.req_no_positions, 
 						new.selected_members, 
 						new.filled_positions, 
@@ -920,7 +920,12 @@ if(count($_POST) > 0)
 		if($hostname !='' && $username !='' && $dbname !='' )
 		{
                     try{
-                        $mysqlPDO = new PDO('mysql:host='.$hostname.';dbname='.$dbname.'',$username, $password);
+			    $options = array(
+        PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
+	PDO::MYSQL_ATTR_SSL_CA => '/public/DigiCertGlobalRootG2.crt.pem',
+	PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false,
+);
+                        $mysqlPDO = new PDO('mysql:host='.$hostname.';dbname='.$dbname.'',$username, $password, $options);
 							if (!$mysqlPDO)
 							{
 				                            $msgarray['error'] = 'Could not connect to specified database' ;
